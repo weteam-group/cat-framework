@@ -5,41 +5,23 @@
 
     <parent>
         <groupId>cn.lakex</groupId>
-        <artifactId>cat-dependencies</artifactId>
+        <artifactId>cat-framework</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cat-framework</artifactId>
+    <artifactId>cat-error</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>cat-framework</name>
-    <description>cat-framework is important component.</description>
-
-    <url>http://cat.lakex.cn</url>
-    <licenses>
-        <license>
-            <name>The LGPL License</name>
-            <url>http://www.gnu.org/licenses/lgpl-3.0.html</url>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <name>LarryKoo</name>
-            <email>gumutianqi@gmail.com</email>
-        </developer>
-    </developers>
+    <name>cat-error</name>
+    <description>cat-error</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
     <modules>
-        <module>cat-io</module>
-        <module>cat-core</module>
-        <module>cat-error</module>
-        <module>cat-validation</module>
+
     </modules>
 
     <dependencyManagement>
