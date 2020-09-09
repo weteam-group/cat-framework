@@ -72,6 +72,7 @@ public class ChinaIdCardValidator implements ConstraintValidator<ChinaIdCard, St
         if (value == null) {
             return true;
         }
+        // match China-Id-Card pattern
         boolean matches = ID_CARD_PATTERN.matcher(value).matches();
         if (matches && value.length() == ID_CARD_LENGTH) {
             try {
