@@ -40,7 +40,7 @@ public class SplitUtil {
      * @param <T>     集合对象类型
      * @return 返回拆分后的多个个集合对象
      */
-    public static <T> List<List<T>> split(List<T> resList, int count) {
+    public <T> List<List<T>> split(List<T> resList, int count) {
         List<List<T>> ret = new ArrayList<>();
         int size = resList.size();
 

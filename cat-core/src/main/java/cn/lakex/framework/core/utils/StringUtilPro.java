@@ -51,7 +51,7 @@ public class StringUtilPro {
      * @return true if the given value is either null or the empty string
      */
     public boolean isNullOrEmpty(String value) {
-        return value == null || value.isEmpty();
+        return null == value || value.isEmpty();
     }
 
     /**

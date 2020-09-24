@@ -18,12 +18,11 @@
 
 package cn.lakex.framework.core.utils;
 
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import net.dreamlu.mica.core.utils.Charsets;
-import net.dreamlu.mica.core.utils.StringUtil;
 
 import java.io.*;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
@@ -46,6 +45,7 @@ import java.util.StringTokenizer;
  * @author AWS
  */
 @Slf4j
+@UtilityClass
 public class Mimetypes {
     /**
      * The default XML mimetype: application/xml
@@ -74,14 +74,13 @@ public class Mimetypes {
      */
     private HashMap<String, String> extensionToMimetypeMap = new HashMap<String, String>();
 
-    private Mimetypes() {
-    }
-
     /**
      * Loads MIME type info from the file 'mime.types' in the classpath, if it's available.
      */
-    public synchronized static Mimetypes getInstance() {
-        if (mimetypes != null) return mimetypes;
+    public synchronized Mimetypes getInstance() {
+        if (mimetypes != null) {
+            return mimetypes;
+        }
 
         mimetypes = new Mimetypes();
         InputStream is = mimetypes.getClass().getResourceAsStream("/mime.types");
@@ -90,7 +89,7 @@ public class Mimetypes {
                 log.debug("Loading mime types from file in the classpath: mime.types");
             }
             try {
-                mimetypes.loadAndReplaceMimetypes(is);
+                loadAndReplaceMimetypes(is);
             } catch (IOException e) {
                 if (log.isErrorEnabled()) {
                     log.error("Failed to load mime types from file in the classpath: mime.types", e);

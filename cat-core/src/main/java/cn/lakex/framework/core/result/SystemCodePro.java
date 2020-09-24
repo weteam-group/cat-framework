@@ -34,18 +34,18 @@ import java.util.Objects;
  */
 @Getter
 @AllArgsConstructor
-@Schema(name = "系统扩展返回结果Code")
+@Schema(name = "System Extends Code")
 public enum SystemCodePro implements IResultCode {
 
     /**
      * Token 过期
      */
-    TOKEN_EXPIRED(SystemCodePro.TOKEN_EXPIRED_CODE, "Token已过期"),
+    TOKEN_EXPIRED(SystemCodePro.TOKEN_EXPIRED_CODE, "Token Expired"),
 
     /**
      * 无效的 Token
      */
-    TOKEN_INVALID(SystemCodePro.TOKEN_INVALID_CODE, "无效Token");
+    TOKEN_INVALID(SystemCodePro.TOKEN_INVALID_CODE, "Invalid Token");
 
 
     /**

@@ -4,13 +4,15 @@
 
 package cn.lakex.framework.core.utils;
 
+import lombok.experimental.UtilityClass;
 import net.dreamlu.mica.core.utils.Base64Util;
 import net.dreamlu.mica.core.utils.StringUtil;
 
+import javax.annotation.Nullable;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -22,8 +24,9 @@ import java.util.zip.GZIPOutputStream;
  * @date 2020/7/16 22:13
  * @since 3.0.0
  */
+@UtilityClass
 public class GzipUtil {
-    private static final String TAG = "GzipUtil";
+    private final static String TAG = "GzipUtil";
 
     /**
      * 使用 Gzip 压缩字符串
@@ -31,16 +34,13 @@ public class GzipUtil {
      * @param data 待压缩的字符串
      * @return After unzip {@link String}
      */
-    public static String compress(String data) {
-        if (data == null || data.length() == 0) {
+    public static String compress(String data) throws IOException {
+        if (data.length() == 0) {
             return null;
         }
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        GZIPOutputStream gzip;
-        try {
-            gzip = new GZIPOutputStream(out);
-            gzip.write(data.getBytes("UTF-8"));
-            gzip.close();
+        try (GZIPOutputStream gzip = new GZIPOutputStream(out)) {
+            gzip.write(data.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             // Trace some error logs
             throw new RuntimeException(e);
@@ -54,7 +54,8 @@ public class GzipUtil {
      * @param data 待压缩的字符串
      * @return After unzip {@link String}
      */
-    public static String unCompress(String data) {
+    @Nullable
+    public String unCompress(String data) throws IOException {
         if (StringUtil.isBlank(data)) {
             return null;
         }
@@ -73,16 +74,11 @@ public class GzipUtil {
             // Trace some error logs
             throw new RuntimeException(e);
         } finally {
-            try {
-                out.close();
-                if (gzipStream != null) {
-                    gzipStream.close();
-                }
-            } catch (IOException e) {
-                // Trace some error logs
-                throw new RuntimeException(e);
+            out.close();
+            if (gzipStream != null) {
+                gzipStream.close();
             }
         }
-        return new String(out.toByteArray(), Charset.forName("UTF-8"));
+        return new String(out.toByteArray(), StandardCharsets.UTF_8);
     }
 }

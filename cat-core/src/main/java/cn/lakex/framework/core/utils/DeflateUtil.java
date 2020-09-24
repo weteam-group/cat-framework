@@ -4,6 +4,7 @@
 
 package cn.lakex.framework.core.utils;
 
+import lombok.experimental.UtilityClass;
 import net.dreamlu.mica.core.utils.Base64Util;
 
 import javax.annotation.Nullable;
@@ -13,18 +14,19 @@ import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 /**
- * Based Deflater Utils
+ * Based Deflate Utils
  *
  * @author LarryKoo (larrykoo@126.com)
  * @slogon 站在巨人的肩膀上
  * @date 2020/7/16 21:47
  * @since 3.0.0
  */
+@UtilityClass
 public class DeflateUtil {
     /**
      * 压缩
      */
-    public static String compress(String data) {
+    public String compress(String data) {
         /**
          *     document: https://docs.oracle.com/javase/8/docs/api/java/util/zip/Deflater.html
          *     0 ~ 9 压缩等级 低到高
@@ -66,7 +68,7 @@ public class DeflateUtil {
      * 解压缩
      */
     @Nullable
-    public static String unCompress(String data) {
+    public String uncompress(String data) {
         byte[] decodeString = Base64Util.decode(data.getBytes());
 
         // 1. 创建一个新的解压缩器

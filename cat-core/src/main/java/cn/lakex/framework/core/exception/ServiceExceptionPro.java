@@ -33,6 +33,7 @@ import java.util.Optional;
  * @since 3.0.0
  */
 public class ServiceExceptionPro extends ServiceException {
+    private static final long serialVersionUID = 2221587623986490728L;
     /**
      * 异常等级
      */

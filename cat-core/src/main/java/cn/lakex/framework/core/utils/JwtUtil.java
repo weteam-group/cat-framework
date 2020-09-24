@@ -23,6 +23,8 @@ import io.jsonwebtoken.*;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.security.Key;
 import java.time.Duration;
 import java.time.Instant;
@@ -63,7 +65,7 @@ public class JwtUtil {
      * @param expiration 过期时间，单位秒
      * @return {@link String} jws 字符串
      */
-    public static String create(SignatureAlgorithm signAlg, Key signKey, String subject, Long expiration) {
+    public String create(SignatureAlgorithm signAlg, @NotNull Key signKey, @NotBlank String subject, Long expiration) {
         // 计算过期时间，并且转换为 java.util.Date 类型
         Instant instant = new Date().toInstant();
         Date validity = Date.from(instant.plus(Duration.ofSeconds(expiration)));
@@ -86,7 +88,8 @@ public class JwtUtil {
      * @return token subject 字符串
      * @throws ServiceExceptionPro {@link SystemCodePro} TOKEN_EXPIRED / TOKEN_INVALID
      */
-    public static JwtObject parse(Key signKey, String jws, Long clockSkewMillis) {
+    @NotNull
+    public JwtObject parse(@NotNull Key signKey, @NotBlank String jws, Long clockSkewMillis) {
         try {
             Claims claims = Jwts.parser()
                     .setSigningKey(signKey)
@@ -109,7 +112,7 @@ public class JwtUtil {
             }
             throw new ServiceExceptionPro(SystemCodePro.TOKEN_INVALID, ex).error();
         } catch (Exception e) {
-            throw new ServiceExceptionPro(e);
+            throw new ServiceExceptionPro(e).error();
         }
     }
 
@@ -120,7 +123,7 @@ public class JwtUtil {
      * @param jws     待验证的 Token 字符串
      * @return 合法返回 true，不合法返回 false，不会抛出异常
      */
-    public static boolean valid(Key signKey, String jws) {
+    public boolean valid(@NotNull Key signKey, @NotBlank String jws) {
         try {
             Jwts.parser()
                     .setSigningKey(signKey)
@@ -132,7 +135,7 @@ public class JwtUtil {
             log.warn("JWS verify failure: {}", SystemCodePro.TOKEN_INVALID.toString());
             return false;
         } catch (Exception e) {
-            throw new ServiceExceptionPro(e);
+            throw new ServiceExceptionPro(e).error();
         }
     }
 
