@@ -40,9 +40,11 @@
         <module>cat-core</module>
         <module>cat-error</module>
         <module>cat-validation</module>
+        <module>cat-logging</module>
     </modules>
 
     <dependencyManagement>
+
     </dependencyManagement>
 
     <dependencies>

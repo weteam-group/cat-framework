@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.lakex</groupId>
         <artifactId>cat-framework</artifactId>
+        <groupId>cn.lakex</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>cat-io</artifactId>
+    <artifactId>cat-logging</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-    <name>cat-io</name>
-    <description>cat-io</description>
+    <name>cat-logging</name>
+    <description>cat-logging</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
-    <dependencyManagement>
-    </dependencyManagement>
-
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>cn.lakex</groupId>
+            <artifactId>cat-core</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -38,4 +50,6 @@
             </plugin>
         </plugins>
     </build>
+
+
 </project>
