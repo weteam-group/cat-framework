@@ -40,7 +40,7 @@ import org.springframework.lang.Nullable;
 @ToString
 @NoArgsConstructor
 @Schema(name = "R2", description = "响应信息主体-V2")
-public class R2<T> extends R {
+public class R2<T> extends R<T> {
     private static final long serialVersionUID = -1049801173077797823L;
 
     @Schema(description = "链路调用 TraceId")
@@ -102,13 +102,12 @@ public class R2<T> extends R {
     /**
      * 生成返回数据签名信息
      *
-     * @param <T> 泛型
      * @return 携带包含签名信息的返回结果
      */
-    public <T> R2<T> sign() {
+    public R2<T> sign() {
         this.setAlg("");
         this.setSign("");
         this.setTraceId("");
-        return (R2<T>) this;
+        return this;
     }
 }
