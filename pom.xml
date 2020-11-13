@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
 
     <name>cat-framework</name>
-    <description>cat-framework is important component.</description>
+    <description>cat-framework is a full magical framework.</description>
 
     <url>http://cat.lakex.cn</url>
     <licenses>
@@ -42,13 +42,6 @@
         <module>cat-validation</module>
         <module>cat-logging</module>
     </modules>
-
-    <dependencyManagement>
-
-    </dependencyManagement>
-
-    <dependencies>
-    </dependencies>
 
     <build>
         <plugins>

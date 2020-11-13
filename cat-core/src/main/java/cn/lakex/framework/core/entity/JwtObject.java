@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cn.lakex.framework.core.model;
+package cn.lakex.framework.core.entity;
 
 import io.jsonwebtoken.Claims;
 import lombok.Builder;

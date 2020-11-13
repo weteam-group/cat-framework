@@ -17,7 +17,7 @@
 package cn.lakex.framework.core.utils;
 
 import cn.lakex.framework.core.exception.ServiceExceptionPro;
-import cn.lakex.framework.core.model.JwtObject;
+import cn.lakex.framework.core.entity.JwtObject;
 import cn.lakex.framework.core.result.SystemCodePro;
 import io.jsonwebtoken.*;
 import lombok.experimental.UtilityClass;

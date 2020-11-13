@@ -24,7 +24,7 @@
  */
 @NonNullApi
 @NonNullFields
-package cn.lakex.framework.core.model;
+package cn.lakex.framework.core.entity;
 
 import org.springframework.lang.NonNullApi;
 import org.springframework.lang.NonNullFields;
