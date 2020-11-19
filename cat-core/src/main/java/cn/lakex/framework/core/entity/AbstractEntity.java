@@ -33,15 +33,15 @@ import java.util.Objects;
  * @date 2020/11/11 14:09
  * @since 3.0.0
  */
-public abstract class AbstractDomain implements Serializable {
+public abstract class AbstractEntity implements Serializable {
     private static final long serialVersionUID = 4555913943001696766L;
 
     /**
      * A initialized method of abstract
      *
-     * @return {@link AbstractDomain}
+     * @return {@link AbstractEntity}
      */
-    public abstract AbstractDomain init();
+    public abstract AbstractEntity init();
 
     /**
      * Convert a object to a json string.
