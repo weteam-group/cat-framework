@@ -30,7 +30,7 @@
         <dependency>
             <groupId>cn.lakex</groupId>
             <artifactId>cat-core</artifactId>
-            <version>${parent.version}</version>
+            <version>${cat-core.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>

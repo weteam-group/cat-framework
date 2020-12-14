@@ -17,6 +17,7 @@
 package cn.lakex.framework.logging.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
@@ -29,6 +30,7 @@ import java.io.Serializable;
  * @since 3.0.0
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class LogApi extends LogAbstract implements Serializable {
     private static final long serialVersionUID = 3642763957862899990L;
 
